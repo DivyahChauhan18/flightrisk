@@ -173,6 +173,8 @@ export default function FlightRisk() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": process.env.REACT_APP_API_KEY,
+          "anthropic-version": "2023-06-01",
           "anthropic-dangerous-direct-browser-access": "true",
         },
         body: JSON.stringify({
