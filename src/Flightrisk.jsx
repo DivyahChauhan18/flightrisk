@@ -359,7 +359,16 @@ export default function FlightRisk() {
               </div>
               {insightLoading && <p style={{ color: C.label, fontSize: 13, fontStyle: "italic" }}>Analyzing your attrition data...</p>}
               {insight && !insightLoading && (
-                <p style={{ fontSize: 13, lineHeight: 1.85, color: C.textSub, margin: 0, whiteSpace: "pre-wrap" }}>{insight}</p>
+                <div style={{ fontSize: 13, lineHeight: 1.85, color: C.textSub }}>
+                  {insight.split('\n').map((line, i) => {
+                    if (line.startsWith('## ')) return <h3 key={i} style={{ fontSize: 15, fontWeight: 700, color: C.text, margin: "16px 0 6px", fontFamily: C.font }}>{line.replace('## ', '')}</h3>;
+                    if (line.startsWith('**') && line.endsWith('**')) return <p key={i} style={{ fontWeight: 700, color: C.text, margin: "12px 0 4px" }}>{line.replace(/\*\*/g, '')}</p>;
+                    if (!line.trim()) return <br key={i} />;
+                    // inline bold
+                    const parts = line.split(/\*\*(.*?)\*\*/g);
+                    return <p key={i} style={{ margin: "4px 0" }}>{parts.map((part, j) => j % 2 === 1 ? <strong key={j} style={{ color: C.text }}>{part}</strong> : part)}</p>;
+                  })}
+                </div>
               )}
             </div>
 
