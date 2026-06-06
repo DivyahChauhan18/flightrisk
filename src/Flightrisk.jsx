@@ -396,8 +396,8 @@ function IndividualView() {
     const s=computeIndScore(form), r=getRisk(s);
     setFinal({s,r}); setStep(1); setLoading(true); setInsight("");
     try {
-      const res = await fetch("/api/v1/messages",{
-        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_API_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      const res = await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST", headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-20250514", max_tokens:1000,
           system:"You are a principal HR strategist advising a CHRO. Write exactly 3 sentences. First: name the single dominant attrition driver. Second: one specific leading indicator to track over the next 30 days. Third: one high-leverage retention intervention to deploy this week. Be precise, direct, senior in tone. No hedging, no lists.",
@@ -580,8 +580,8 @@ function BulkView() {
     if (!stats) return;
     setAiLoading(true); setAiDone(false); setAiSummary("");
     try {
-      const res = await fetch("/api/v1/messages",{
-        method:"POST", headers:{"Content-Type":"application/json","x-api-key":process.env.REACT_APP_API_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      const res = await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST", headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-20250514", max_tokens:1500,
           system:"You are a principal HR consultant preparing an executive briefing for a CHRO. Write a structured, decisive analysis in plain prose. Use NO markdown — no ##, no **, no *, no $, no bullet dashes. Use plain text section titles followed by a colon and a line break. Include: (1) Attrition Health Assessment with a severity rating, (2) Highest-Risk Profile description, (3) Three Immediate Interventions Required as numbered action items with rationale. Be authoritative, specific, and data-driven.",
