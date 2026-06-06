@@ -395,8 +395,9 @@ function IndividualView() {
   const analyze = async () => {
     const s=computeIndScore(form), r=getRisk(s);
     setFinal({s,r}); setStep(1); setLoading(true); setInsight("");
+    console.log("API key present:", !!process.env.REACT_APP_API_KEY, "starts with:", process.env.REACT_APP_API_KEY?.slice(0,10));
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages",{
+      const res = await fetch("/api/claude",{
         method:"POST", headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-20250514", max_tokens:1000,
@@ -580,7 +581,7 @@ function BulkView() {
     if (!stats) return;
     setAiLoading(true); setAiDone(false); setAiSummary("");
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages",{
+      const res = await fetch("/api/claude",{
         method:"POST", headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-20250514", max_tokens:1500,
