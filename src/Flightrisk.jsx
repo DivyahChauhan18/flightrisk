@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
 import Papa from "papaparse";
 
@@ -366,8 +366,8 @@ function IndividualView() {
       <div style={{ borderRight:`1px solid ${C.border}`, overflowY:"auto", padding:"52px 56px 120px" }}>
         <motion.div initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.22, ease:[0.16,1,0.3,1] }} style={{ marginBottom:48 }}>
           <div style={{ fontFamily:C.mono, fontSize:10, color:C.inkDim, letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:10 }}>Individual assessment</div>
-          <h1 style={{ fontFamily:C.sans, fontSize:36, fontWeight:600, color:C.ink, letterSpacing:"-1px", lineHeight:1.15, margin:"0 0 10px" }}>Attrition risk profile</h1>
-          <p style={{ fontFamily:C.sans, fontSize:14, color:C.inkMid, lineHeight:1.7, maxWidth:420, margin:0 }}>Complete the eight signals. The model evaluates flight risk and generates a strategic brief.</p>
+          <h1 style={{ fontFamily:C.sans, fontSize:36, fontWeight:600, color:C.ink, letterSpacing:"-1px", lineHeight:1.15, margin:"0 0 10px" }}>Your next resignation<br/>is in the data.</h1>
+          <p style={{ fontFamily:C.sans, fontSize:14, color:C.inkMid, lineHeight:1.7, maxWidth:420, margin:0 }}>The resignation letter has not been written yet. Eight signals tell you if it will be. Complete the profile and get a strategic brief in seconds.</p>
         </motion.div>
 
         {/* Staggered field list , Emil: stagger communicates structure */}
@@ -586,8 +586,8 @@ function BulkView() {
     <motion.div initial={{ opacity:0, y:10 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.24, ease:[0.16,1,0.3,1] }}
       style={{ maxWidth:560, margin:"0 auto", padding:"100px 24px" }}>
       <Label>Workforce analytics</Label>
-      <h1 style={{ fontFamily:C.sans, fontSize:40, fontWeight:600, color:C.ink, letterSpacing:"-1.5px", lineHeight:1.1, margin:"8px 0 16px" }}>Your next resignation<br/>is in the data.</h1>
-      <p style={{ fontFamily:C.sans, fontSize:14, color:C.inkMid, lineHeight:1.7, marginBottom:48 }}>Upload an IBM HR Analytics CSV to generate a full attrition dashboard with executive insights.</p>
+      <h1 style={{ fontFamily:C.sans, fontSize:40, fontWeight:600, color:C.ink, letterSpacing:"-1.5px", lineHeight:1.1, margin:"8px 0 16px" }}>Every resignation<br/>was predictable.</h1>
+      <p style={{ fontFamily:C.sans, fontSize:14, color:C.inkMid, lineHeight:1.7, marginBottom:48 }}>The pattern was there before they handed in their notice. Upload an IBM HR Analytics CSV and find out who is next.</p>
 
       <motion.div
         animate={{ borderColor:dragging?C.borderHigh:C.border, background:dragging?C.raised:C.surface }}
