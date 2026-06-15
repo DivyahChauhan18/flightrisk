@@ -177,7 +177,6 @@ function RadarCanvas({ signals, size = 220 }) {
 
       // Sweep cone (trailing gradient)
       const sweepAngle = angleRef.current;
-      const grad = ctx.createConicalGradient
         ? null // not widely supported, use arc approach
         : null;
       
@@ -225,7 +224,6 @@ function RadarCanvas({ signals, size = 220 }) {
         const by = cy + Math.sin(blip.angle) * blip.radius;
         const flash = flashRef.current[blip.label] || 0;
         const baseColor = blip.atRisk ? "#EF4444" : "#FFB800";
-        const glowR = blip.atRisk ? 239 : 255;
         const glowG = blip.atRisk ? 68 : 184;
         const glowB = blip.atRisk ? 68 : 0;
 
