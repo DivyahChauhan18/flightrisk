@@ -177,9 +177,6 @@ function RadarCanvas({ signals, size = 220 }) {
 
       // Sweep cone (trailing gradient)
       const sweepAngle = angleRef.current;
-        ? null // not widely supported, use arc approach
-        : null;
-      
       // Draw sweep trail as multiple arcs with decreasing opacity
       for (let t = 0; t < 40; t++) {
         const ta = sweepAngle - (t / 40) * (Math.PI * 0.6);
